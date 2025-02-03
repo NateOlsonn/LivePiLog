@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Vehicle Data</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #FFD700;  /* Gold */
+        }
+
+        .gauge-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        .gauge {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            color: #FFF;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        #rpmGauge {
+            background-color: #FF4500; /* OrangeRed */
+        }
+
+        #mafGauge {
+            background-color: #32CD32; /* LimeGreen */
+        }
+
+        #afrGauge {
+            background-color: #1E90FF; /* DodgerBlue */
+        }
+
+        .needle {
+            position: absolute;
+            width: 3px;
+            height: 60px;
+            background-color: #FFF;
+            top: 50%;
+            left: 50%;
+            transform-origin: 50% 100%;
+            transform: rotate(0deg);
+            transition: transform 0.2s ease;
+        }
+
+        #graph-container {
+            margin-top: 50px;
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Real-Time Vehicle Metrics</h1>
+
+    <div class="gauge-container">
+        <div class="gauge" id="rpmGauge">
+            RPM: 0
+            <div class="needle" id="rpmNeedle"></div>
+        </div>
+        <div class="gauge" id="mafGauge">
+            MAF: 0
+            <div class="needle" id="mafNeedle"></div>
+        </div>
+        <div class="gauge" id="afrGauge">
+            AFR: 0
+            <div class="needle" id="afrNeedle"></div>
+        </div>
+    </div>
+
+    <div id="graph-container"></div>
+
+    <script>
+        // 3D graph trace with initial values
+        var trace1 = {
+            x: [0],
+            y: [0],
+            z: [0],
+            mode: 'markers',
+            type: 'scatter3d',
+            marker: { size: 5, color: 'rgb(255, 0, 0)', opacity: 0.8 }
+        };
+
+        var layout = {
+            scene: {
+                xaxis: { title: 'Load' },
+                yaxis: { title: 'RPM' },
+                zaxis: { title: 'Time' }
+            },
+            title: '3D Graph of Vehicle Metrics'
+        };
+
+        Plotly.newPlot('graph-container', [trace1], layout);
+
+        // Function to update gauges and graph with live data
+        function updateMetrics(rpm, maf, afr) {
+            // Update gauges with real-time data
+            document.getElementById('rpmGauge').innerText = "RPM: " + rpm;
+            document.getElementById('mafGauge').innerText = "MAF: " + maf;
+            document.getElementById('afrGauge').innerText = "AFR: " + afr;
+
+            // Update graph with new values (e.g., for testing)
+            var trace = {
+                x: [maf],
+                y: [rpm],
+                z: [Date.now() / 1000],
+                mode: 'markers',
+                type: 'scatter3d',
+                marker: { size: 5, color: 'rgb(255, 0, 0)', opacity: 0.8 }
+            };
+
+            // Append new data points
+            Plotly.update('graph-container', {
+                x: [[...trace1.x, maf]],
+                y: [[...trace1.y, rpm]],
+                z: [[...trace1.z, Date.now() / 1000]]
+            });
+
+            // Update needle positions based on values (scaling the values for visual effect)
+            document.getElementById('rpmNeedle').style.transform = 'rotate(' + (rpm / 100 * 180 - 90) + 'deg)';
+            document.getElementById('mafNeedle').style.transform = 'rotate(' + (maf / 1000 * 180 - 90) + 'deg)';
+            document.getElementById('afrNeedle').style.transform = 'rotate(' + (afr / 20 * 180 - 90) + 'deg)';
+        }
+
+        // Fetch live data every 1 second
+        setInterval(function() {
+            fetch('/live-data')  // Fetch data from Flask endpoint
+                .then(response => response.json())
+                .then(data => {
+                    // Update metrics on the page
+                    updateMetrics(data.rpm, data.maf, data.afr);
+                })
+                .catch(error => console.error('Error fetching live data:', error));
+        }, 1000);  // Update every 1 second
+    </script>
+
+</body>
+</html>
