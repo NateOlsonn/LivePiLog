@@ -8,7 +8,7 @@ cd "$PROJECT_DIR" || exit 1
 
 # Step 1: Set up Python Virtual Environment
 echo "Creating virtual environment..."
-sudo python3 -m venv venv
+python3 -m venv venv
 
 # Step 2: Activate Virtual Environment
 echo "Activating virtual environment..."
