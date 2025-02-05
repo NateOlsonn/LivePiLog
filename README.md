@@ -1,5 +1,12 @@
 # LivePiLog
-This repo supports a custom live logging software to display things like RPM, Load, AFR, and more. This project uses a Pi-0-W and an Arduino with analog input. Utilizing this repo on your own hardware requires understanding how to obtain data from your engines ECU, or specific sensors. You can piggyback off of your ecu pin-holes or do some splicing
+This project requires set up past the provided set up instructions customization to this project lies in a few places, the arduino code and the html file in templates. 
+The most challenging part once your Pi is running stable is converting the analog voltage to units, I recommend this be done on the arduino, however it is possible to rely on the python code in (app.py) to convert values.
+
+The value I find out of this project is being able to read and log rpm & load data at the same time as my AFR data. Instead of being forced to look glance at 3 different guages when road/self tuning.
+
+Currently the code reads 3 values, AFR, Load and RPM, the arduino prints to serial in .csv form which is then read and parsed by app.py.
+
+There are tons of different ways to go about this project but it is purposed with getting you to a starting point on your custom guages and/or logging.
 
 ## Setup Instructions
 
@@ -33,22 +40,22 @@ Once the reboot is complete, your application should be up and running.
 Follow these steps to configure your Arduino to connect with the Raspberry Pi:
 
 1. **Access the Arduino code**:  
-   Navigate to the following file in the repository:  
-   [LivePiLog Arduino Code](https://github.com/NateOlsonn/LivePiLog/arduino/read.cpp)
+   Navigate to the following file in the repository:
+   https://github.com/NateOlsonn/LivePiLog/blob/main/arduino/read.cpp
 
-2. **Copy the code**:  
+3. **Copy the code**:  
    Copy all of the code from the `read.cpp` file.
 
-3. **Create a new sketch in the Arduino IDE**:  
+4. **Create a new sketch in the Arduino IDE**:  
    Open the Arduino IDE and create a new, empty file.
 
-4. **Paste the copied code**:  
+5. **Paste the copied code**:  
    Paste the copied code from the `read.cpp` file into the new sketch.
 
-5. **Upload the code to the Arduino**:  
+6. **Upload the code to the Arduino**:  
    Click the **Upload** button in the Arduino IDE to upload the code to your Arduino board.
 
-6. **Connect the Arduino to the Raspberry Pi**:  
+7. **Connect the Arduino to the Raspberry Pi**:  
    To connect the Arduino to the Raspberry Pi, you will need a **Micro USB OTG Host to Standard B Type cable**.  
    You can purchase it from [Amazon here](https://www.amazon.com/dp/B06XXL8T45?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1).
 
