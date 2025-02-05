@@ -9,11 +9,11 @@ Currently the code reads 3 values, AFR, Load and RPM, the arduino prints to seri
 
 There are tons of different ways to go about this project but it is purposed with getting you to a starting point on your custom guages and/or logging.
 
-###Current Access Method
+### Current Access Method
 Currently I'm using a desktopless environment, and accessing the page with 192.168.x.x:5000 from a seperate device on the same network, if you need to change the port it is specified at the bottom of app.py. 
 I plan on utilizing a screen connected to the Pi, which will autoboot to a browser(localhost:5000) using Chromium.
 
-###AP MODE
+### AP MODE
 If you interested in driving around with a broadcasting wifi network then you should find interest in the other option that will be released soon.
 The other option will be to configure the Pi in AP mode so that you can connect to its network on any wifi supported device (phone, laptop, another pi).
 
