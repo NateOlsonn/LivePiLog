@@ -5,7 +5,7 @@ The most challenging part once your Pi is running stable is converting the analo
 ### Use Case & Value
 The value I find out of this project is being able to read and log rpm & load data at the same time as my AFR data. Instead of being forced to look glance at 3 different guages when road/self tuning.
 Additionally you can look at this as a cost effective way to save money on guages and logging equipment.
-Currently the code reads 3 values, AFR, Load and RPM, the arduino prints to serial in .csv form which is then read and parsed by app.py.
+Currently the code reads 3 values, AFR, Load and RPM, the arduino prints to serial in .csv form which is then read and parsed by app.py. My plan is to use this with a screen 
 
 There are tons of different ways to go about this project but it is purposed with getting you to a starting point on your custom guages and/or logging.
 
