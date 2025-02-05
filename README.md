@@ -2,17 +2,25 @@
 This project requires set up past the provided set up instructions customization to this project lies in a few places, the arduino code and the html file in templates. 
 The most challenging part once your Pi is running stable is converting the analog voltage to units, I recommend this be done on the arduino, however it is possible to rely on the python code in (app.py) to convert values.
 
+### Use Case & Value
 The value I find out of this project is being able to read and log rpm & load data at the same time as my AFR data. Instead of being forced to look glance at 3 different guages when road/self tuning.
-
+Additionally you can look at this as a cost effective way to save money on guages and logging equipment.
 Currently the code reads 3 values, AFR, Load and RPM, the arduino prints to serial in .csv form which is then read and parsed by app.py.
 
 There are tons of different ways to go about this project but it is purposed with getting you to a starting point on your custom guages and/or logging.
 
+###Current Access Method
 Currently I'm using a desktopless environment, and accessing the page with 192.168.x.x:5000 from a seperate device on the same network, if you need to change the port it is specified at the bottom of app.py. 
 I plan on utilizing a screen connected to the Pi, which will autoboot to a browser(localhost:5000) using Chromium.
 
+###AP MODE
 If you interested in driving around with a broadcasting wifi network then you should find interest in the other option that will be released soon.
-The other option will be to configure the Pi in AP mode so that you can connect to its network on any wifi supported device (phone, laptop, another pi), if you switch the Pi's power to ignition your AP and web app is expected to boot at the same time, allowing you to connect and access the webpage where your guages are.
+The other option will be to configure the Pi in AP mode so that you can connect to its network on any wifi supported device (phone, laptop, another pi).
+
+### Web Page View
+![image](https://github.com/user-attachments/assets/dd807cdb-63be-4c6b-b8f6-f34f1ad9e9fa)
+
+
 
 
 ## Pi Configuration
