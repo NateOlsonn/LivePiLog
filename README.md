@@ -20,6 +20,8 @@ The other option will be to configure the Pi in AP mode so that you can connect 
 ### Web Page View
 ![image](https://github.com/user-attachments/assets/dd807cdb-63be-4c6b-b8f6-f34f1ad9e9fa)
 
+### flask_app.service properly running 
+![image](https://github.com/user-attachments/assets/e7e8715b-c836-4ab1-bd51-e1b5d964ad9d)
 
 
 
@@ -74,5 +76,6 @@ Follow these steps to configure your Arduino to connect with the Raspberry Pi:
    To connect the Arduino to the Raspberry Pi, you will need a **Micro USB OTG Host to Standard B Type cable**.  
    You can purchase it from [Amazon here](https://www.amazon.com/dp/B06XXL8T45?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1).
 
-Once the Arduino is uploaded with the code and connected to the Raspberry Pi, it will be ready to communicate.
+Once the Arduino is uploaded with the code and connected to the Raspberry Pi, it will start sending data from each input.
+Which should be visible on the webpage. 
 
