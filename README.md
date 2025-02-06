@@ -3,7 +3,7 @@ This project requires set up past the provided set up instructions customization
 The most challenging part once your Pi is running stable is converting the analog voltage to units, I recommend this be done on the arduino, however it is possible to rely on the python code in (app.py) to convert values.
 
 ### Use Case & Value
-The value I find out of this project is being able to read and log rpm & load data at the same time as my AFR data. Instead of being forced to look glance at 3 different guages when road/self tuning.
+The value I find out of this project is being able to read and log rpm & load data at the same time as my AFR data. Instead of being forced to glance at 3 different guages when road/self tuning.
 Additionally you can look at this as a cost effective way to save money on guages and logging equipment.
 Currently the code reads 3 values, AFR, Load and RPM, the arduino prints to serial in .csv form which is then read and parsed by app.py. My plan is to use this with a screen 
 
