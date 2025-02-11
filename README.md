@@ -1,7 +1,6 @@
 
 <meta name="google-site-verification" content="JXgz7W3BffQ4QY7erEV45-2MzLVBMTmIwsgtvPdGGN4" />
 
-
 # LivePiLog
 This project requires set up past the provided set up instructions customization to this project lies in a few places, the arduino code and the html file in templates. 
 The most challenging part once your Pi is running stable is converting the analog voltage to units, I recommend this be done on the arduino, however it is possible to rely on the python code in (app.py) to convert values.
