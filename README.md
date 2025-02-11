@@ -1,4 +1,4 @@
-GOOGLE INDEX VERIFICATION 
+
 <meta name="google-site-verification" content="JXgz7W3BffQ4QY7erEV45-2MzLVBMTmIwsgtvPdGGN4" />
 
 
